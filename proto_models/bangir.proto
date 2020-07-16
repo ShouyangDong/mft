@@ -1,0 +1,108 @@
+syntax = "proto3";
+
+package tvm;
+
+message ResNet{
+    repeated Node node = 1;
+}
+
+message Node {
+    string name = 1;
+    string op = 2;
+    int32 op_index = 3;
+    DataType data_type = 4;
+    repeated string input = 5;
+    repeated ListOfInteger input_datashape = 6;
+    repeated DataShape data_shape = 7;
+    DataLayout data_layout = 8;
+    repeated string top_name = 9;
+    repeated string bottom_name = 10;
+    DataParam dataparam = 102;
+    repeated DeviceTopology input_memory_space = 103;
+    repeated DeviceTopology output_memory_space = 104;
+    repeated ListOfInteger opconfiguration = 105;
+    ConvParam conv_param = 106;
+    FCParam fc_param = 107;
+    BatchNormParam batch_norm_param = 108;
+    PoolingParam pooling_param = 109;
+    ScaleParam scale_param = 110;
+}
+
+enum DeviceTopology {
+   Sram = 0;
+   Ldram = 1;
+   Gdram = 2;
+   Nram = 3;
+}
+
+enum DataType {
+    FLOAT16 = 0;
+    FLOAT32 = 1;
+    INT8 = 2;
+    INT16 = 3;
+}
+
+enum DataLayout {
+    ONE_DIM = 0;
+    NHWC = 1;
+    NCHW = 2;
+    CHW = 3;
+    HWC = 4;
+    NC = 5;
+}
+
+enum Activation{
+    Linear = 0;
+    Relu = 1;
+    Sigmoid = 2;
+    Softmax = 3;
+    Softplus = 4;
+    Tanh = 5;
+    LeakyReLU = 6;
+}
+
+message ParallelConfig{
+    int32 parallel_dim = 1;
+}
+
+message DataShape {
+    int32 number = 1;
+}
+
+message ConvParam{
+    repeated int32 kernel_size = 1;
+    repeated int32 pad = 2;
+    repeated int32 stride = 3;
+    repeated int32 dilation = 4;
+    bool bias = 5;
+}
+
+message FCParam{
+    int32 units = 1;
+    bool bias_term = 2;
+}
+
+message BatchNormParam{
+    bool use_global_stats = 1;
+} 
+
+message PoolingParam{
+    int32 kernel_size = 1; 
+    int32 stride = 2;
+    string pool = 3;
+}          
+
+message ScaleParam{
+    bool bias_term = 1;
+}
+
+message ListOfInteger {
+    repeated int32 ints=2;
+}
+
+message DataParam {
+    DataLayout layout = 1;
+    int32 position = 2;
+    float scale = 3;
+    string dump_folder = 4;
+}

@@ -1,0 +1,1611 @@
+node {
+  name: "conv1"
+  op: "Convolution"
+  top_name: "conv1"
+  bottom_name: "data"
+}
+node {
+  name: "bn_conv1"
+  op: "BatchNorm"
+  op_index: 1
+  top_name: "conv1"
+  bottom_name: "conv1"
+}
+node {
+  name: "scale_conv1"
+  op: "Scale"
+  op_index: 2
+  top_name: "conv1"
+  bottom_name: "conv1"
+}
+node {
+  name: "conv1_relu"
+  op: "ReLU"
+  op_index: 3
+  top_name: "conv1"
+  bottom_name: "conv1"
+}
+node {
+  name: "pool1"
+  op: "Pooling"
+  op_index: 4
+  top_name: "pool1"
+  bottom_name: "conv1"
+}
+node {
+  name: "res2a_branch1"
+  op: "Convolution"
+  op_index: 5
+  top_name: "res2a_branch1"
+  bottom_name: "pool1"
+}
+node {
+  name: "bn2a_branch1"
+  op: "BatchNorm"
+  op_index: 6
+  top_name: "res2a_branch1"
+  bottom_name: "res2a_branch1"
+}
+node {
+  name: "scale2a_branch1"
+  op: "Scale"
+  op_index: 7
+  top_name: "res2a_branch1"
+  bottom_name: "res2a_branch1"
+}
+node {
+  name: "res2a_branch2a"
+  op: "Convolution"
+  op_index: 8
+  top_name: "res2a_branch2a"
+  bottom_name: "pool1"
+}
+node {
+  name: "bn2a_branch2a"
+  op: "BatchNorm"
+  op_index: 9
+  top_name: "res2a_branch2a"
+  bottom_name: "res2a_branch2a"
+}
+node {
+  name: "scale2a_branch2a"
+  op: "Scale"
+  op_index: 10
+  top_name: "res2a_branch2a"
+  bottom_name: "res2a_branch2a"
+}
+node {
+  name: "res2a_branch2a_relu"
+  op: "ReLU"
+  op_index: 11
+  top_name: "res2a_branch2a"
+  bottom_name: "res2a_branch2a"
+}
+node {
+  name: "res2a_branch2b"
+  op: "Convolution"
+  op_index: 12
+  top_name: "res2a_branch2b"
+  bottom_name: "res2a_branch2a"
+}
+node {
+  name: "bn2a_branch2b"
+  op: "BatchNorm"
+  op_index: 13
+  top_name: "res2a_branch2b"
+  bottom_name: "res2a_branch2b"
+}
+node {
+  name: "scale2a_branch2b"
+  op: "Scale"
+  op_index: 14
+  top_name: "res2a_branch2b"
+  bottom_name: "res2a_branch2b"
+}
+node {
+  name: "res2a_branch2b_relu"
+  op: "ReLU"
+  op_index: 15
+  top_name: "res2a_branch2b"
+  bottom_name: "res2a_branch2b"
+}
+node {
+  name: "res2a_branch2c"
+  op: "Convolution"
+  op_index: 16
+  top_name: "res2a_branch2c"
+  bottom_name: "res2a_branch2b"
+}
+node {
+  name: "bn2a_branch2c"
+  op: "BatchNorm"
+  op_index: 17
+  top_name: "res2a_branch2c"
+  bottom_name: "res2a_branch2c"
+}
+node {
+  name: "scale2a_branch2c"
+  op: "Scale"
+  op_index: 18
+  top_name: "res2a_branch2c"
+  bottom_name: "res2a_branch2c"
+}
+node {
+  name: "res2a"
+  op: "Eltwise"
+  op_index: 19
+  top_name: "res2a"
+  bottom_name: "res2a_branch1"
+  bottom_name: "res2a_branch2c"
+}
+node {
+  name: "res2a_relu"
+  op: "ReLU"
+  op_index: 20
+  top_name: "res2a"
+  bottom_name: "res2a"
+}
+node {
+  name: "res2b_branch2a"
+  op: "Convolution"
+  op_index: 21
+  top_name: "res2b_branch2a"
+  bottom_name: "res2a"
+}
+node {
+  name: "bn2b_branch2a"
+  op: "BatchNorm"
+  op_index: 22
+  top_name: "res2b_branch2a"
+  bottom_name: "res2b_branch2a"
+}
+node {
+  name: "scale2b_branch2a"
+  op: "Scale"
+  op_index: 23
+  top_name: "res2b_branch2a"
+  bottom_name: "res2b_branch2a"
+}
+node {
+  name: "res2b_branch2a_relu"
+  op: "ReLU"
+  op_index: 24
+  top_name: "res2b_branch2a"
+  bottom_name: "res2b_branch2a"
+}
+node {
+  name: "res2b_branch2b"
+  op: "Convolution"
+  op_index: 25
+  top_name: "res2b_branch2b"
+  bottom_name: "res2b_branch2a"
+}
+node {
+  name: "bn2b_branch2b"
+  op: "BatchNorm"
+  op_index: 26
+  top_name: "res2b_branch2b"
+  bottom_name: "res2b_branch2b"
+}
+node {
+  name: "scale2b_branch2b"
+  op: "Scale"
+  op_index: 27
+  top_name: "res2b_branch2b"
+  bottom_name: "res2b_branch2b"
+}
+node {
+  name: "res2b_branch2b_relu"
+  op: "ReLU"
+  op_index: 28
+  top_name: "res2b_branch2b"
+  bottom_name: "res2b_branch2b"
+}
+node {
+  name: "res2b_branch2c"
+  op: "Convolution"
+  op_index: 29
+  top_name: "res2b_branch2c"
+  bottom_name: "res2b_branch2b"
+}
+node {
+  name: "bn2b_branch2c"
+  op: "BatchNorm"
+  op_index: 30
+  top_name: "res2b_branch2c"
+  bottom_name: "res2b_branch2c"
+}
+node {
+  name: "scale2b_branch2c"
+  op: "Scale"
+  op_index: 31
+  top_name: "res2b_branch2c"
+  bottom_name: "res2b_branch2c"
+}
+node {
+  name: "res2b"
+  op: "Eltwise"
+  op_index: 32
+  top_name: "res2b"
+  bottom_name: "res2a"
+  bottom_name: "res2b_branch2c"
+}
+node {
+  name: "res2b_relu"
+  op: "ReLU"
+  op_index: 33
+  top_name: "res2b"
+  bottom_name: "res2b"
+}
+node {
+  name: "res2c_branch2a"
+  op: "Convolution"
+  op_index: 34
+  top_name: "res2c_branch2a"
+  bottom_name: "res2b"
+}
+node {
+  name: "bn2c_branch2a"
+  op: "BatchNorm"
+  op_index: 35
+  top_name: "res2c_branch2a"
+  bottom_name: "res2c_branch2a"
+}
+node {
+  name: "scale2c_branch2a"
+  op: "Scale"
+  op_index: 36
+  top_name: "res2c_branch2a"
+  bottom_name: "res2c_branch2a"
+}
+node {
+  name: "res2c_branch2a_relu"
+  op: "ReLU"
+  op_index: 37
+  top_name: "res2c_branch2a"
+  bottom_name: "res2c_branch2a"
+}
+node {
+  name: "res2c_branch2b"
+  op: "Convolution"
+  op_index: 38
+  top_name: "res2c_branch2b"
+  bottom_name: "res2c_branch2a"
+}
+node {
+  name: "bn2c_branch2b"
+  op: "BatchNorm"
+  op_index: 39
+  top_name: "res2c_branch2b"
+  bottom_name: "res2c_branch2b"
+}
+node {
+  name: "scale2c_branch2b"
+  op: "Scale"
+  op_index: 40
+  top_name: "res2c_branch2b"
+  bottom_name: "res2c_branch2b"
+}
+node {
+  name: "res2c_branch2b_relu"
+  op: "ReLU"
+  op_index: 41
+  top_name: "res2c_branch2b"
+  bottom_name: "res2c_branch2b"
+}
+node {
+  name: "res2c_branch2c"
+  op: "Convolution"
+  op_index: 42
+  top_name: "res2c_branch2c"
+  bottom_name: "res2c_branch2b"
+}
+node {
+  name: "bn2c_branch2c"
+  op: "BatchNorm"
+  op_index: 43
+  top_name: "res2c_branch2c"
+  bottom_name: "res2c_branch2c"
+}
+node {
+  name: "scale2c_branch2c"
+  op: "Scale"
+  op_index: 44
+  top_name: "res2c_branch2c"
+  bottom_name: "res2c_branch2c"
+}
+node {
+  name: "res2c"
+  op: "Eltwise"
+  op_index: 45
+  top_name: "res2c"
+  bottom_name: "res2b"
+  bottom_name: "res2c_branch2c"
+}
+node {
+  name: "res2c_relu"
+  op: "ReLU"
+  op_index: 46
+  top_name: "res2c"
+  bottom_name: "res2c"
+}
+node {
+  name: "res3a_branch1"
+  op: "Convolution"
+  op_index: 47
+  top_name: "res3a_branch1"
+  bottom_name: "res2c"
+}
+node {
+  name: "bn3a_branch1"
+  op: "BatchNorm"
+  op_index: 48
+  top_name: "res3a_branch1"
+  bottom_name: "res3a_branch1"
+}
+node {
+  name: "scale3a_branch1"
+  op: "Scale"
+  op_index: 49
+  top_name: "res3a_branch1"
+  bottom_name: "res3a_branch1"
+}
+node {
+  name: "res3a_branch2a"
+  op: "Convolution"
+  op_index: 50
+  top_name: "res3a_branch2a"
+  bottom_name: "res2c"
+}
+node {
+  name: "bn3a_branch2a"
+  op: "BatchNorm"
+  op_index: 51
+  top_name: "res3a_branch2a"
+  bottom_name: "res3a_branch2a"
+}
+node {
+  name: "scale3a_branch2a"
+  op: "Scale"
+  op_index: 52
+  top_name: "res3a_branch2a"
+  bottom_name: "res3a_branch2a"
+}
+node {
+  name: "res3a_branch2a_relu"
+  op: "ReLU"
+  op_index: 53
+  top_name: "res3a_branch2a"
+  bottom_name: "res3a_branch2a"
+}
+node {
+  name: "res3a_branch2b"
+  op: "Convolution"
+  op_index: 54
+  top_name: "res3a_branch2b"
+  bottom_name: "res3a_branch2a"
+}
+node {
+  name: "bn3a_branch2b"
+  op: "BatchNorm"
+  op_index: 55
+  top_name: "res3a_branch2b"
+  bottom_name: "res3a_branch2b"
+}
+node {
+  name: "scale3a_branch2b"
+  op: "Scale"
+  op_index: 56
+  top_name: "res3a_branch2b"
+  bottom_name: "res3a_branch2b"
+}
+node {
+  name: "res3a_branch2b_relu"
+  op: "ReLU"
+  op_index: 57
+  top_name: "res3a_branch2b"
+  bottom_name: "res3a_branch2b"
+}
+node {
+  name: "res3a_branch2c"
+  op: "Convolution"
+  op_index: 58
+  top_name: "res3a_branch2c"
+  bottom_name: "res3a_branch2b"
+}
+node {
+  name: "bn3a_branch2c"
+  op: "BatchNorm"
+  op_index: 59
+  top_name: "res3a_branch2c"
+  bottom_name: "res3a_branch2c"
+}
+node {
+  name: "scale3a_branch2c"
+  op: "Scale"
+  op_index: 60
+  top_name: "res3a_branch2c"
+  bottom_name: "res3a_branch2c"
+}
+node {
+  name: "res3a"
+  op: "Eltwise"
+  op_index: 61
+  top_name: "res3a"
+  bottom_name: "res3a_branch1"
+  bottom_name: "res3a_branch2c"
+}
+node {
+  name: "res3a_relu"
+  op: "ReLU"
+  op_index: 62
+  top_name: "res3a"
+  bottom_name: "res3a"
+}
+node {
+  name: "res3b_branch2a"
+  op: "Convolution"
+  op_index: 63
+  top_name: "res3b_branch2a"
+  bottom_name: "res3a"
+}
+node {
+  name: "bn3b_branch2a"
+  op: "BatchNorm"
+  op_index: 64
+  top_name: "res3b_branch2a"
+  bottom_name: "res3b_branch2a"
+}
+node {
+  name: "scale3b_branch2a"
+  op: "Scale"
+  op_index: 65
+  top_name: "res3b_branch2a"
+  bottom_name: "res3b_branch2a"
+}
+node {
+  name: "res3b_branch2a_relu"
+  op: "ReLU"
+  op_index: 66
+  top_name: "res3b_branch2a"
+  bottom_name: "res3b_branch2a"
+}
+node {
+  name: "res3b_branch2b"
+  op: "Convolution"
+  op_index: 67
+  top_name: "res3b_branch2b"
+  bottom_name: "res3b_branch2a"
+}
+node {
+  name: "bn3b_branch2b"
+  op: "BatchNorm"
+  op_index: 68
+  top_name: "res3b_branch2b"
+  bottom_name: "res3b_branch2b"
+}
+node {
+  name: "scale3b_branch2b"
+  op: "Scale"
+  op_index: 69
+  top_name: "res3b_branch2b"
+  bottom_name: "res3b_branch2b"
+}
+node {
+  name: "res3b_branch2b_relu"
+  op: "ReLU"
+  op_index: 70
+  top_name: "res3b_branch2b"
+  bottom_name: "res3b_branch2b"
+}
+node {
+  name: "res3b_branch2c"
+  op: "Convolution"
+  op_index: 71
+  top_name: "res3b_branch2c"
+  bottom_name: "res3b_branch2b"
+}
+node {
+  name: "bn3b_branch2c"
+  op: "BatchNorm"
+  op_index: 72
+  top_name: "res3b_branch2c"
+  bottom_name: "res3b_branch2c"
+}
+node {
+  name: "scale3b_branch2c"
+  op: "Scale"
+  op_index: 73
+  top_name: "res3b_branch2c"
+  bottom_name: "res3b_branch2c"
+}
+node {
+  name: "res3b"
+  op: "Eltwise"
+  op_index: 74
+  top_name: "res3b"
+  bottom_name: "res3a"
+  bottom_name: "res3b_branch2c"
+}
+node {
+  name: "res3b_relu"
+  op: "ReLU"
+  op_index: 75
+  top_name: "res3b"
+  bottom_name: "res3b"
+}
+node {
+  name: "res3c_branch2a"
+  op: "Convolution"
+  op_index: 76
+  top_name: "res3c_branch2a"
+  bottom_name: "res3b"
+}
+node {
+  name: "bn3c_branch2a"
+  op: "BatchNorm"
+  op_index: 77
+  top_name: "res3c_branch2a"
+  bottom_name: "res3c_branch2a"
+}
+node {
+  name: "scale3c_branch2a"
+  op: "Scale"
+  op_index: 78
+  top_name: "res3c_branch2a"
+  bottom_name: "res3c_branch2a"
+}
+node {
+  name: "res3c_branch2a_relu"
+  op: "ReLU"
+  op_index: 79
+  top_name: "res3c_branch2a"
+  bottom_name: "res3c_branch2a"
+}
+node {
+  name: "res3c_branch2b"
+  op: "Convolution"
+  op_index: 80
+  top_name: "res3c_branch2b"
+  bottom_name: "res3c_branch2a"
+}
+node {
+  name: "bn3c_branch2b"
+  op: "BatchNorm"
+  op_index: 81
+  top_name: "res3c_branch2b"
+  bottom_name: "res3c_branch2b"
+}
+node {
+  name: "scale3c_branch2b"
+  op: "Scale"
+  op_index: 82
+  top_name: "res3c_branch2b"
+  bottom_name: "res3c_branch2b"
+}
+node {
+  name: "res3c_branch2b_relu"
+  op: "ReLU"
+  op_index: 83
+  top_name: "res3c_branch2b"
+  bottom_name: "res3c_branch2b"
+}
+node {
+  name: "res3c_branch2c"
+  op: "Convolution"
+  op_index: 84
+  top_name: "res3c_branch2c"
+  bottom_name: "res3c_branch2b"
+}
+node {
+  name: "bn3c_branch2c"
+  op: "BatchNorm"
+  op_index: 85
+  top_name: "res3c_branch2c"
+  bottom_name: "res3c_branch2c"
+}
+node {
+  name: "scale3c_branch2c"
+  op: "Scale"
+  op_index: 86
+  top_name: "res3c_branch2c"
+  bottom_name: "res3c_branch2c"
+}
+node {
+  name: "res3c"
+  op: "Eltwise"
+  op_index: 87
+  top_name: "res3c"
+  bottom_name: "res3b"
+  bottom_name: "res3c_branch2c"
+}
+node {
+  name: "res3c_relu"
+  op: "ReLU"
+  op_index: 88
+  top_name: "res3c"
+  bottom_name: "res3c"
+}
+node {
+  name: "res3d_branch2a"
+  op: "Convolution"
+  op_index: 89
+  top_name: "res3d_branch2a"
+  bottom_name: "res3c"
+}
+node {
+  name: "bn3d_branch2a"
+  op: "BatchNorm"
+  op_index: 90
+  top_name: "res3d_branch2a"
+  bottom_name: "res3d_branch2a"
+}
+node {
+  name: "scale3d_branch2a"
+  op: "Scale"
+  op_index: 91
+  top_name: "res3d_branch2a"
+  bottom_name: "res3d_branch2a"
+}
+node {
+  name: "res3d_branch2a_relu"
+  op: "ReLU"
+  op_index: 92
+  top_name: "res3d_branch2a"
+  bottom_name: "res3d_branch2a"
+}
+node {
+  name: "res3d_branch2b"
+  op: "Convolution"
+  op_index: 93
+  top_name: "res3d_branch2b"
+  bottom_name: "res3d_branch2a"
+}
+node {
+  name: "bn3d_branch2b"
+  op: "BatchNorm"
+  op_index: 94
+  top_name: "res3d_branch2b"
+  bottom_name: "res3d_branch2b"
+}
+node {
+  name: "scale3d_branch2b"
+  op: "Scale"
+  op_index: 95
+  top_name: "res3d_branch2b"
+  bottom_name: "res3d_branch2b"
+}
+node {
+  name: "res3d_branch2b_relu"
+  op: "ReLU"
+  op_index: 96
+  top_name: "res3d_branch2b"
+  bottom_name: "res3d_branch2b"
+}
+node {
+  name: "res3d_branch2c"
+  op: "Convolution"
+  op_index: 97
+  top_name: "res3d_branch2c"
+  bottom_name: "res3d_branch2b"
+}
+node {
+  name: "bn3d_branch2c"
+  op: "BatchNorm"
+  op_index: 98
+  top_name: "res3d_branch2c"
+  bottom_name: "res3d_branch2c"
+}
+node {
+  name: "scale3d_branch2c"
+  op: "Scale"
+  op_index: 99
+  top_name: "res3d_branch2c"
+  bottom_name: "res3d_branch2c"
+}
+node {
+  name: "res3d"
+  op: "Eltwise"
+  op_index: 100
+  top_name: "res3d"
+  bottom_name: "res3c"
+  bottom_name: "res3d_branch2c"
+}
+node {
+  name: "res3d_relu"
+  op: "ReLU"
+  op_index: 101
+  top_name: "res3d"
+  bottom_name: "res3d"
+}
+node {
+  name: "res4a_branch1"
+  op: "Convolution"
+  op_index: 102
+  top_name: "res4a_branch1"
+  bottom_name: "res3d"
+}
+node {
+  name: "bn4a_branch1"
+  op: "BatchNorm"
+  op_index: 103
+  top_name: "res4a_branch1"
+  bottom_name: "res4a_branch1"
+}
+node {
+  name: "scale4a_branch1"
+  op: "Scale"
+  op_index: 104
+  top_name: "res4a_branch1"
+  bottom_name: "res4a_branch1"
+}
+node {
+  name: "res4a_branch2a"
+  op: "Convolution"
+  op_index: 105
+  top_name: "res4a_branch2a"
+  bottom_name: "res3d"
+}
+node {
+  name: "bn4a_branch2a"
+  op: "BatchNorm"
+  op_index: 106
+  top_name: "res4a_branch2a"
+  bottom_name: "res4a_branch2a"
+}
+node {
+  name: "scale4a_branch2a"
+  op: "Scale"
+  op_index: 107
+  top_name: "res4a_branch2a"
+  bottom_name: "res4a_branch2a"
+}
+node {
+  name: "res4a_branch2a_relu"
+  op: "ReLU"
+  op_index: 108
+  top_name: "res4a_branch2a"
+  bottom_name: "res4a_branch2a"
+}
+node {
+  name: "res4a_branch2b"
+  op: "Convolution"
+  op_index: 109
+  top_name: "res4a_branch2b"
+  bottom_name: "res4a_branch2a"
+}
+node {
+  name: "bn4a_branch2b"
+  op: "BatchNorm"
+  op_index: 110
+  top_name: "res4a_branch2b"
+  bottom_name: "res4a_branch2b"
+}
+node {
+  name: "scale4a_branch2b"
+  op: "Scale"
+  op_index: 111
+  top_name: "res4a_branch2b"
+  bottom_name: "res4a_branch2b"
+}
+node {
+  name: "res4a_branch2b_relu"
+  op: "ReLU"
+  op_index: 112
+  top_name: "res4a_branch2b"
+  bottom_name: "res4a_branch2b"
+}
+node {
+  name: "res4a_branch2c"
+  op: "Convolution"
+  op_index: 113
+  top_name: "res4a_branch2c"
+  bottom_name: "res4a_branch2b"
+}
+node {
+  name: "bn4a_branch2c"
+  op: "BatchNorm"
+  op_index: 114
+  top_name: "res4a_branch2c"
+  bottom_name: "res4a_branch2c"
+}
+node {
+  name: "scale4a_branch2c"
+  op: "Scale"
+  op_index: 115
+  top_name: "res4a_branch2c"
+  bottom_name: "res4a_branch2c"
+}
+node {
+  name: "res4a"
+  op: "Eltwise"
+  op_index: 116
+  top_name: "res4a"
+  bottom_name: "res4a_branch1"
+  bottom_name: "res4a_branch2c"
+}
+node {
+  name: "res4a_relu"
+  op: "ReLU"
+  op_index: 117
+  top_name: "res4a"
+  bottom_name: "res4a"
+}
+node {
+  name: "res4b_branch2a"
+  op: "Convolution"
+  op_index: 118
+  top_name: "res4b_branch2a"
+  bottom_name: "res4a"
+}
+node {
+  name: "bn4b_branch2a"
+  op: "BatchNorm"
+  op_index: 119
+  top_name: "res4b_branch2a"
+  bottom_name: "res4b_branch2a"
+}
+node {
+  name: "scale4b_branch2a"
+  op: "Scale"
+  op_index: 120
+  top_name: "res4b_branch2a"
+  bottom_name: "res4b_branch2a"
+}
+node {
+  name: "res4b_branch2a_relu"
+  op: "ReLU"
+  op_index: 121
+  top_name: "res4b_branch2a"
+  bottom_name: "res4b_branch2a"
+}
+node {
+  name: "res4b_branch2b"
+  op: "Convolution"
+  op_index: 122
+  top_name: "res4b_branch2b"
+  bottom_name: "res4b_branch2a"
+}
+node {
+  name: "bn4b_branch2b"
+  op: "BatchNorm"
+  op_index: 123
+  top_name: "res4b_branch2b"
+  bottom_name: "res4b_branch2b"
+}
+node {
+  name: "scale4b_branch2b"
+  op: "Scale"
+  op_index: 124
+  top_name: "res4b_branch2b"
+  bottom_name: "res4b_branch2b"
+}
+node {
+  name: "res4b_branch2b_relu"
+  op: "ReLU"
+  op_index: 125
+  top_name: "res4b_branch2b"
+  bottom_name: "res4b_branch2b"
+}
+node {
+  name: "res4b_branch2c"
+  op: "Convolution"
+  op_index: 126
+  top_name: "res4b_branch2c"
+  bottom_name: "res4b_branch2b"
+}
+node {
+  name: "bn4b_branch2c"
+  op: "BatchNorm"
+  op_index: 127
+  top_name: "res4b_branch2c"
+  bottom_name: "res4b_branch2c"
+}
+node {
+  name: "scale4b_branch2c"
+  op: "Scale"
+  op_index: 128
+  top_name: "res4b_branch2c"
+  bottom_name: "res4b_branch2c"
+}
+node {
+  name: "res4b"
+  op: "Eltwise"
+  op_index: 129
+  top_name: "res4b"
+  bottom_name: "res4a"
+  bottom_name: "res4b_branch2c"
+}
+node {
+  name: "res4b_relu"
+  op: "ReLU"
+  op_index: 130
+  top_name: "res4b"
+  bottom_name: "res4b"
+}
+node {
+  name: "res4c_branch2a"
+  op: "Convolution"
+  op_index: 131
+  top_name: "res4c_branch2a"
+  bottom_name: "res4b"
+}
+node {
+  name: "bn4c_branch2a"
+  op: "BatchNorm"
+  op_index: 132
+  top_name: "res4c_branch2a"
+  bottom_name: "res4c_branch2a"
+}
+node {
+  name: "scale4c_branch2a"
+  op: "Scale"
+  op_index: 133
+  top_name: "res4c_branch2a"
+  bottom_name: "res4c_branch2a"
+}
+node {
+  name: "res4c_branch2a_relu"
+  op: "ReLU"
+  op_index: 134
+  top_name: "res4c_branch2a"
+  bottom_name: "res4c_branch2a"
+}
+node {
+  name: "res4c_branch2b"
+  op: "Convolution"
+  op_index: 135
+  top_name: "res4c_branch2b"
+  bottom_name: "res4c_branch2a"
+}
+node {
+  name: "bn4c_branch2b"
+  op: "BatchNorm"
+  op_index: 136
+  top_name: "res4c_branch2b"
+  bottom_name: "res4c_branch2b"
+}
+node {
+  name: "scale4c_branch2b"
+  op: "Scale"
+  op_index: 137
+  top_name: "res4c_branch2b"
+  bottom_name: "res4c_branch2b"
+}
+node {
+  name: "res4c_branch2b_relu"
+  op: "ReLU"
+  op_index: 138
+  top_name: "res4c_branch2b"
+  bottom_name: "res4c_branch2b"
+}
+node {
+  name: "res4c_branch2c"
+  op: "Convolution"
+  op_index: 139
+  top_name: "res4c_branch2c"
+  bottom_name: "res4c_branch2b"
+}
+node {
+  name: "bn4c_branch2c"
+  op: "BatchNorm"
+  op_index: 140
+  top_name: "res4c_branch2c"
+  bottom_name: "res4c_branch2c"
+}
+node {
+  name: "scale4c_branch2c"
+  op: "Scale"
+  op_index: 141
+  top_name: "res4c_branch2c"
+  bottom_name: "res4c_branch2c"
+}
+node {
+  name: "res4c"
+  op: "Eltwise"
+  op_index: 142
+  top_name: "res4c"
+  bottom_name: "res4b"
+  bottom_name: "res4c_branch2c"
+}
+node {
+  name: "res4c_relu"
+  op: "ReLU"
+  op_index: 143
+  top_name: "res4c"
+  bottom_name: "res4c"
+}
+node {
+  name: "res4d_branch2a"
+  op: "Convolution"
+  op_index: 144
+  top_name: "res4d_branch2a"
+  bottom_name: "res4c"
+}
+node {
+  name: "bn4d_branch2a"
+  op: "BatchNorm"
+  op_index: 145
+  top_name: "res4d_branch2a"
+  bottom_name: "res4d_branch2a"
+}
+node {
+  name: "scale4d_branch2a"
+  op: "Scale"
+  op_index: 146
+  top_name: "res4d_branch2a"
+  bottom_name: "res4d_branch2a"
+}
+node {
+  name: "res4d_branch2a_relu"
+  op: "ReLU"
+  op_index: 147
+  top_name: "res4d_branch2a"
+  bottom_name: "res4d_branch2a"
+}
+node {
+  name: "res4d_branch2b"
+  op: "Convolution"
+  op_index: 148
+  top_name: "res4d_branch2b"
+  bottom_name: "res4d_branch2a"
+}
+node {
+  name: "bn4d_branch2b"
+  op: "BatchNorm"
+  op_index: 149
+  top_name: "res4d_branch2b"
+  bottom_name: "res4d_branch2b"
+}
+node {
+  name: "scale4d_branch2b"
+  op: "Scale"
+  op_index: 150
+  top_name: "res4d_branch2b"
+  bottom_name: "res4d_branch2b"
+}
+node {
+  name: "res4d_branch2b_relu"
+  op: "ReLU"
+  op_index: 151
+  top_name: "res4d_branch2b"
+  bottom_name: "res4d_branch2b"
+}
+node {
+  name: "res4d_branch2c"
+  op: "Convolution"
+  op_index: 152
+  top_name: "res4d_branch2c"
+  bottom_name: "res4d_branch2b"
+}
+node {
+  name: "bn4d_branch2c"
+  op: "BatchNorm"
+  op_index: 153
+  top_name: "res4d_branch2c"
+  bottom_name: "res4d_branch2c"
+}
+node {
+  name: "scale4d_branch2c"
+  op: "Scale"
+  op_index: 154
+  top_name: "res4d_branch2c"
+  bottom_name: "res4d_branch2c"
+}
+node {
+  name: "res4d"
+  op: "Eltwise"
+  op_index: 155
+  top_name: "res4d"
+  bottom_name: "res4c"
+  bottom_name: "res4d_branch2c"
+}
+node {
+  name: "res4d_relu"
+  op: "ReLU"
+  op_index: 156
+  top_name: "res4d"
+  bottom_name: "res4d"
+}
+node {
+  name: "res4e_branch2a"
+  op: "Convolution"
+  op_index: 157
+  top_name: "res4e_branch2a"
+  bottom_name: "res4d"
+}
+node {
+  name: "bn4e_branch2a"
+  op: "BatchNorm"
+  op_index: 158
+  top_name: "res4e_branch2a"
+  bottom_name: "res4e_branch2a"
+}
+node {
+  name: "scale4e_branch2a"
+  op: "Scale"
+  op_index: 159
+  top_name: "res4e_branch2a"
+  bottom_name: "res4e_branch2a"
+}
+node {
+  name: "res4e_branch2a_relu"
+  op: "ReLU"
+  op_index: 160
+  top_name: "res4e_branch2a"
+  bottom_name: "res4e_branch2a"
+}
+node {
+  name: "res4e_branch2b"
+  op: "Convolution"
+  op_index: 161
+  top_name: "res4e_branch2b"
+  bottom_name: "res4e_branch2a"
+}
+node {
+  name: "bn4e_branch2b"
+  op: "BatchNorm"
+  op_index: 162
+  top_name: "res4e_branch2b"
+  bottom_name: "res4e_branch2b"
+}
+node {
+  name: "scale4e_branch2b"
+  op: "Scale"
+  op_index: 163
+  top_name: "res4e_branch2b"
+  bottom_name: "res4e_branch2b"
+}
+node {
+  name: "res4e_branch2b_relu"
+  op: "ReLU"
+  op_index: 164
+  top_name: "res4e_branch2b"
+  bottom_name: "res4e_branch2b"
+}
+node {
+  name: "res4e_branch2c"
+  op: "Convolution"
+  op_index: 165
+  top_name: "res4e_branch2c"
+  bottom_name: "res4e_branch2b"
+}
+node {
+  name: "bn4e_branch2c"
+  op: "BatchNorm"
+  op_index: 166
+  top_name: "res4e_branch2c"
+  bottom_name: "res4e_branch2c"
+}
+node {
+  name: "scale4e_branch2c"
+  op: "Scale"
+  op_index: 167
+  top_name: "res4e_branch2c"
+  bottom_name: "res4e_branch2c"
+}
+node {
+  name: "res4e"
+  op: "Eltwise"
+  op_index: 168
+  top_name: "res4e"
+  bottom_name: "res4d"
+  bottom_name: "res4e_branch2c"
+}
+node {
+  name: "res4e_relu"
+  op: "ReLU"
+  op_index: 169
+  top_name: "res4e"
+  bottom_name: "res4e"
+}
+node {
+  name: "res4f_branch2a"
+  op: "Convolution"
+  op_index: 170
+  top_name: "res4f_branch2a"
+  bottom_name: "res4e"
+}
+node {
+  name: "bn4f_branch2a"
+  op: "BatchNorm"
+  op_index: 171
+  top_name: "res4f_branch2a"
+  bottom_name: "res4f_branch2a"
+}
+node {
+  name: "scale4f_branch2a"
+  op: "Scale"
+  op_index: 172
+  top_name: "res4f_branch2a"
+  bottom_name: "res4f_branch2a"
+}
+node {
+  name: "res4f_branch2a_relu"
+  op: "ReLU"
+  op_index: 173
+  top_name: "res4f_branch2a"
+  bottom_name: "res4f_branch2a"
+}
+node {
+  name: "res4f_branch2b"
+  op: "Convolution"
+  op_index: 174
+  top_name: "res4f_branch2b"
+  bottom_name: "res4f_branch2a"
+}
+node {
+  name: "bn4f_branch2b"
+  op: "BatchNorm"
+  op_index: 175
+  top_name: "res4f_branch2b"
+  bottom_name: "res4f_branch2b"
+}
+node {
+  name: "scale4f_branch2b"
+  op: "Scale"
+  op_index: 176
+  top_name: "res4f_branch2b"
+  bottom_name: "res4f_branch2b"
+}
+node {
+  name: "res4f_branch2b_relu"
+  op: "ReLU"
+  op_index: 177
+  top_name: "res4f_branch2b"
+  bottom_name: "res4f_branch2b"
+}
+node {
+  name: "res4f_branch2c"
+  op: "Convolution"
+  op_index: 178
+  top_name: "res4f_branch2c"
+  bottom_name: "res4f_branch2b"
+}
+node {
+  name: "bn4f_branch2c"
+  op: "BatchNorm"
+  op_index: 179
+  top_name: "res4f_branch2c"
+  bottom_name: "res4f_branch2c"
+}
+node {
+  name: "scale4f_branch2c"
+  op: "Scale"
+  op_index: 180
+  top_name: "res4f_branch2c"
+  bottom_name: "res4f_branch2c"
+}
+node {
+  name: "res4f"
+  op: "Eltwise"
+  op_index: 181
+  top_name: "res4f"
+  bottom_name: "res4e"
+  bottom_name: "res4f_branch2c"
+}
+node {
+  name: "res4f_relu"
+  op: "ReLU"
+  op_index: 182
+  top_name: "res4f"
+  bottom_name: "res4f"
+}
+node {
+  name: "res5a_branch1"
+  op: "Convolution"
+  op_index: 183
+  top_name: "res5a_branch1"
+  bottom_name: "res4f"
+}
+node {
+  name: "bn5a_branch1"
+  op: "BatchNorm"
+  op_index: 184
+  top_name: "res5a_branch1"
+  bottom_name: "res5a_branch1"
+}
+node {
+  name: "scale5a_branch1"
+  op: "Scale"
+  op_index: 185
+  top_name: "res5a_branch1"
+  bottom_name: "res5a_branch1"
+}
+node {
+  name: "res5a_branch2a"
+  op: "Convolution"
+  op_index: 186
+  top_name: "res5a_branch2a"
+  bottom_name: "res4f"
+}
+node {
+  name: "bn5a_branch2a"
+  op: "BatchNorm"
+  op_index: 187
+  top_name: "res5a_branch2a"
+  bottom_name: "res5a_branch2a"
+}
+node {
+  name: "scale5a_branch2a"
+  op: "Scale"
+  op_index: 188
+  top_name: "res5a_branch2a"
+  bottom_name: "res5a_branch2a"
+}
+node {
+  name: "res5a_branch2a_relu"
+  op: "ReLU"
+  op_index: 189
+  top_name: "res5a_branch2a"
+  bottom_name: "res5a_branch2a"
+}
+node {
+  name: "res5a_branch2b"
+  op: "Convolution"
+  op_index: 190
+  top_name: "res5a_branch2b"
+  bottom_name: "res5a_branch2a"
+}
+node {
+  name: "bn5a_branch2b"
+  op: "BatchNorm"
+  op_index: 191
+  top_name: "res5a_branch2b"
+  bottom_name: "res5a_branch2b"
+}
+node {
+  name: "scale5a_branch2b"
+  op: "Scale"
+  op_index: 192
+  top_name: "res5a_branch2b"
+  bottom_name: "res5a_branch2b"
+}
+node {
+  name: "res5a_branch2b_relu"
+  op: "ReLU"
+  op_index: 193
+  top_name: "res5a_branch2b"
+  bottom_name: "res5a_branch2b"
+}
+node {
+  name: "res5a_branch2c"
+  op: "Convolution"
+  op_index: 194
+  top_name: "res5a_branch2c"
+  bottom_name: "res5a_branch2b"
+}
+node {
+  name: "bn5a_branch2c"
+  op: "BatchNorm"
+  op_index: 195
+  top_name: "res5a_branch2c"
+  bottom_name: "res5a_branch2c"
+}
+node {
+  name: "scale5a_branch2c"
+  op: "Scale"
+  op_index: 196
+  top_name: "res5a_branch2c"
+  bottom_name: "res5a_branch2c"
+}
+node {
+  name: "res5a"
+  op: "Eltwise"
+  op_index: 197
+  top_name: "res5a"
+  bottom_name: "res5a_branch1"
+  bottom_name: "res5a_branch2c"
+}
+node {
+  name: "res5a_relu"
+  op: "ReLU"
+  op_index: 198
+  top_name: "res5a"
+  bottom_name: "res5a"
+}
+node {
+  name: "res5b_branch2a"
+  op: "Convolution"
+  op_index: 199
+  top_name: "res5b_branch2a"
+  bottom_name: "res5a"
+}
+node {
+  name: "bn5b_branch2a"
+  op: "BatchNorm"
+  op_index: 200
+  top_name: "res5b_branch2a"
+  bottom_name: "res5b_branch2a"
+}
+node {
+  name: "scale5b_branch2a"
+  op: "Scale"
+  op_index: 201
+  top_name: "res5b_branch2a"
+  bottom_name: "res5b_branch2a"
+}
+node {
+  name: "res5b_branch2a_relu"
+  op: "ReLU"
+  op_index: 202
+  top_name: "res5b_branch2a"
+  bottom_name: "res5b_branch2a"
+}
+node {
+  name: "res5b_branch2b"
+  op: "Convolution"
+  op_index: 203
+  top_name: "res5b_branch2b"
+  bottom_name: "res5b_branch2a"
+}
+node {
+  name: "bn5b_branch2b"
+  op: "BatchNorm"
+  op_index: 204
+  top_name: "res5b_branch2b"
+  bottom_name: "res5b_branch2b"
+}
+node {
+  name: "scale5b_branch2b"
+  op: "Scale"
+  op_index: 205
+  top_name: "res5b_branch2b"
+  bottom_name: "res5b_branch2b"
+}
+node {
+  name: "res5b_branch2b_relu"
+  op: "ReLU"
+  op_index: 206
+  top_name: "res5b_branch2b"
+  bottom_name: "res5b_branch2b"
+}
+node {
+  name: "res5b_branch2c"
+  op: "Convolution"
+  op_index: 207
+  top_name: "res5b_branch2c"
+  bottom_name: "res5b_branch2b"
+}
+node {
+  name: "bn5b_branch2c"
+  op: "BatchNorm"
+  op_index: 208
+  top_name: "res5b_branch2c"
+  bottom_name: "res5b_branch2c"
+}
+node {
+  name: "scale5b_branch2c"
+  op: "Scale"
+  op_index: 209
+  top_name: "res5b_branch2c"
+  bottom_name: "res5b_branch2c"
+}
+node {
+  name: "res5b"
+  op: "Eltwise"
+  op_index: 210
+  top_name: "res5b"
+  bottom_name: "res5a"
+  bottom_name: "res5b_branch2c"
+}
+node {
+  name: "res5b_relu"
+  op: "ReLU"
+  op_index: 211
+  top_name: "res5b"
+  bottom_name: "res5b"
+}
+node {
+  name: "res5c_branch2a"
+  op: "Convolution"
+  op_index: 212
+  top_name: "res5c_branch2a"
+  bottom_name: "res5b"
+}
+node {
+  name: "bn5c_branch2a"
+  op: "BatchNorm"
+  op_index: 213
+  top_name: "res5c_branch2a"
+  bottom_name: "res5c_branch2a"
+}
+node {
+  name: "scale5c_branch2a"
+  op: "Scale"
+  op_index: 214
+  top_name: "res5c_branch2a"
+  bottom_name: "res5c_branch2a"
+}
+node {
+  name: "res5c_branch2a_relu"
+  op: "ReLU"
+  op_index: 215
+  top_name: "res5c_branch2a"
+  bottom_name: "res5c_branch2a"
+}
+node {
+  name: "res5c_branch2b"
+  op: "Convolution"
+  op_index: 216
+  top_name: "res5c_branch2b"
+  bottom_name: "res5c_branch2a"
+}
+node {
+  name: "bn5c_branch2b"
+  op: "BatchNorm"
+  op_index: 217
+  top_name: "res5c_branch2b"
+  bottom_name: "res5c_branch2b"
+}
+node {
+  name: "scale5c_branch2b"
+  op: "Scale"
+  op_index: 218
+  top_name: "res5c_branch2b"
+  bottom_name: "res5c_branch2b"
+}
+node {
+  name: "res5c_branch2b_relu"
+  op: "ReLU"
+  op_index: 219
+  top_name: "res5c_branch2b"
+  bottom_name: "res5c_branch2b"
+}
+node {
+  name: "res5c_branch2c"
+  op: "Convolution"
+  op_index: 220
+  top_name: "res5c_branch2c"
+  bottom_name: "res5c_branch2b"
+}
+node {
+  name: "bn5c_branch2c"
+  op: "BatchNorm"
+  op_index: 221
+  top_name: "res5c_branch2c"
+  bottom_name: "res5c_branch2c"
+}
+node {
+  name: "scale5c_branch2c"
+  op: "Scale"
+  op_index: 222
+  top_name: "res5c_branch2c"
+  bottom_name: "res5c_branch2c"
+}
+node {
+  name: "res5c"
+  op: "Eltwise"
+  op_index: 223
+  top_name: "res5c"
+  bottom_name: "res5b"
+  bottom_name: "res5c_branch2c"
+}
+node {
+  name: "res5c_relu"
+  op: "ReLU"
+  op_index: 224
+  top_name: "res5c"
+  bottom_name: "res5c"
+}
+node {
+  name: "pool5"
+  op: "Pooling"
+  op_index: 225
+  top_name: "pool5"
+  bottom_name: "res5c"
+}
+node {
+  name: "fc1000"
+  op: "InnerProduct"
+  op_index: 226
+  top_name: "fc1000"
+  bottom_name: "pool5"
+}
+node {
+  name: "prob"
+  op: "Softmax"
+  op_index: 227
+  top_name: "prob"
+  bottom_name: "fc1000"
+}
