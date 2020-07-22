@@ -53,11 +53,11 @@ if __name__ == "__main__":
     resnet50_prototxt_file = 'ResNet-50-deploy.prototxt'
     resnet101_prototxt_file = 'ResNet-101-deploy.prototxt'
     resnet152_prototxt_file = 'ResNet-152-deploy.prototxt'
-    resnet_list = ['ResNet-50-deploy', 'ResNet-101-deploy', 'ResNet-152-deploy']
+    model_list = ['ResNet-50-deploy', 'ResNet-101-deploy', 'ResNet-152-deploy','VGG_ILSVRC_16_layers_deploy']
 
-    for resnet_version in resnet_list:
-        prototxt_file = "./" + resnet_version + '.prototxt'
-        filename = "./" + resnet_version + ".pbtxt"
+    for model_version in model_list:
+        prototxt_file = "./" + model_version + '.prototxt'
+        filename = "./" + model_version + ".pbtxt"
 
         net = get_caffe_net(prototxt_file)
         file_series(net, filename)

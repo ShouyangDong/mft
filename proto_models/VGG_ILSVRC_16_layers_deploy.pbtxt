@@ -1,0 +1,278 @@
+node {
+  name: "input"
+  op: "Input"
+  top_name: "data"
+}
+node {
+  name: "conv1_1"
+  op: "Convolution"
+  op_index: 1
+  top_name: "conv1_1"
+  bottom_name: "data"
+}
+node {
+  name: "relu1_1"
+  op: "ReLU"
+  op_index: 2
+  top_name: "conv1_1"
+  bottom_name: "conv1_1"
+}
+node {
+  name: "conv1_2"
+  op: "Convolution"
+  op_index: 3
+  top_name: "conv1_2"
+  bottom_name: "conv1_1"
+}
+node {
+  name: "relu1_2"
+  op: "ReLU"
+  op_index: 4
+  top_name: "conv1_2"
+  bottom_name: "conv1_2"
+}
+node {
+  name: "pool1"
+  op: "Pooling"
+  op_index: 5
+  top_name: "pool1"
+  bottom_name: "conv1_2"
+}
+node {
+  name: "conv2_1"
+  op: "Convolution"
+  op_index: 6
+  top_name: "conv2_1"
+  bottom_name: "pool1"
+}
+node {
+  name: "relu2_1"
+  op: "ReLU"
+  op_index: 7
+  top_name: "conv2_1"
+  bottom_name: "conv2_1"
+}
+node {
+  name: "conv2_2"
+  op: "Convolution"
+  op_index: 8
+  top_name: "conv2_2"
+  bottom_name: "conv2_1"
+}
+node {
+  name: "relu2_2"
+  op: "ReLU"
+  op_index: 9
+  top_name: "conv2_2"
+  bottom_name: "conv2_2"
+}
+node {
+  name: "pool2"
+  op: "Pooling"
+  op_index: 10
+  top_name: "pool2"
+  bottom_name: "conv2_2"
+}
+node {
+  name: "conv3_1"
+  op: "Convolution"
+  op_index: 11
+  top_name: "conv3_1"
+  bottom_name: "pool2"
+}
+node {
+  name: "relu3_1"
+  op: "ReLU"
+  op_index: 12
+  top_name: "conv3_1"
+  bottom_name: "conv3_1"
+}
+node {
+  name: "conv3_2"
+  op: "Convolution"
+  op_index: 13
+  top_name: "conv3_2"
+  bottom_name: "conv3_1"
+}
+node {
+  name: "relu3_2"
+  op: "ReLU"
+  op_index: 14
+  top_name: "conv3_2"
+  bottom_name: "conv3_2"
+}
+node {
+  name: "conv3_3"
+  op: "Convolution"
+  op_index: 15
+  top_name: "conv3_3"
+  bottom_name: "conv3_2"
+}
+node {
+  name: "relu3_3"
+  op: "ReLU"
+  op_index: 16
+  top_name: "conv3_3"
+  bottom_name: "conv3_3"
+}
+node {
+  name: "pool3"
+  op: "Pooling"
+  op_index: 17
+  top_name: "pool3"
+  bottom_name: "conv3_3"
+}
+node {
+  name: "conv4_1"
+  op: "Convolution"
+  op_index: 18
+  top_name: "conv4_1"
+  bottom_name: "pool3"
+}
+node {
+  name: "relu4_1"
+  op: "ReLU"
+  op_index: 19
+  top_name: "conv4_1"
+  bottom_name: "conv4_1"
+}
+node {
+  name: "conv4_2"
+  op: "Convolution"
+  op_index: 20
+  top_name: "conv4_2"
+  bottom_name: "conv4_1"
+}
+node {
+  name: "relu4_2"
+  op: "ReLU"
+  op_index: 21
+  top_name: "conv4_2"
+  bottom_name: "conv4_2"
+}
+node {
+  name: "conv4_3"
+  op: "Convolution"
+  op_index: 22
+  top_name: "conv4_3"
+  bottom_name: "conv4_2"
+}
+node {
+  name: "relu4_3"
+  op: "ReLU"
+  op_index: 23
+  top_name: "conv4_3"
+  bottom_name: "conv4_3"
+}
+node {
+  name: "pool4"
+  op: "Pooling"
+  op_index: 24
+  top_name: "pool4"
+  bottom_name: "conv4_3"
+}
+node {
+  name: "conv5_1"
+  op: "Convolution"
+  op_index: 25
+  top_name: "conv5_1"
+  bottom_name: "pool4"
+}
+node {
+  name: "relu5_1"
+  op: "ReLU"
+  op_index: 26
+  top_name: "conv5_1"
+  bottom_name: "conv5_1"
+}
+node {
+  name: "conv5_2"
+  op: "Convolution"
+  op_index: 27
+  top_name: "conv5_2"
+  bottom_name: "conv5_1"
+}
+node {
+  name: "relu5_2"
+  op: "ReLU"
+  op_index: 28
+  top_name: "conv5_2"
+  bottom_name: "conv5_2"
+}
+node {
+  name: "conv5_3"
+  op: "Convolution"
+  op_index: 29
+  top_name: "conv5_3"
+  bottom_name: "conv5_2"
+}
+node {
+  name: "relu5_3"
+  op: "ReLU"
+  op_index: 30
+  top_name: "conv5_3"
+  bottom_name: "conv5_3"
+}
+node {
+  name: "pool5"
+  op: "Pooling"
+  op_index: 31
+  top_name: "pool5"
+  bottom_name: "conv5_3"
+}
+node {
+  name: "fc6"
+  op: "InnerProduct"
+  op_index: 32
+  top_name: "fc6"
+  bottom_name: "pool5"
+}
+node {
+  name: "relu6"
+  op: "ReLU"
+  op_index: 33
+  top_name: "fc6"
+  bottom_name: "fc6"
+}
+node {
+  name: "drop6"
+  op: "Dropout"
+  op_index: 34
+  top_name: "fc6"
+  bottom_name: "fc6"
+}
+node {
+  name: "fc7"
+  op: "InnerProduct"
+  op_index: 35
+  top_name: "fc7"
+  bottom_name: "fc6"
+}
+node {
+  name: "relu7"
+  op: "ReLU"
+  op_index: 36
+  top_name: "fc7"
+  bottom_name: "fc7"
+}
+node {
+  name: "drop7"
+  op: "Dropout"
+  op_index: 37
+  top_name: "fc7"
+  bottom_name: "fc7"
+}
+node {
+  name: "fc8"
+  op: "InnerProduct"
+  op_index: 38
+  top_name: "fc8"
+  bottom_name: "fc7"
+}
+node {
+  name: "prob"
+  op: "Softmax"
+  op_index: 39
+  top_name: "prob"
+  bottom_name: "fc8"
+}
