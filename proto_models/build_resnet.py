@@ -50,10 +50,10 @@ def read_proto(new_filename):
 
 if __name__ == "__main__":
 
-    resnet50_prototxt_file = 'ResNet-50-deploy.prototxt'
-    resnet101_prototxt_file = 'ResNet-101-deploy.prototxt'
-    resnet152_prototxt_file = 'ResNet-152-deploy.prototxt'
-    model_list = ['ResNet-50-deploy', 'ResNet-101-deploy', 'ResNet-152-deploy','VGG_ILSVRC_16_layers_deploy']
+    # resnet50_prototxt_file = 'ResNet-50-deploy.prototxt'
+    # resnet101_prototxt_file = 'ResNet-101-deploy.prototxt'
+    # resnet152_prototxt_file = 'ResNet-152-deploy.prototxt'
+    model_list = ['ResNet-50-deploy', 'ResNet-101-deploy', 'ResNet-152-deploy','VGG_ILSVRC_16_layers_deploy','AlexNet']
 
     for model_version in model_list:
         prototxt_file = "./" + model_version + '.prototxt'
