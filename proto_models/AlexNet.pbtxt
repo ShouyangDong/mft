@@ -1,0 +1,183 @@
+node {
+  name: "data"
+  op: "Data"
+  top_name: "data"
+  top_name: "label"
+}
+node {
+  name: "data"
+  op: "Data"
+  op_index: 1
+  top_name: "data"
+  top_name: "label"
+}
+node {
+  name: "conv1"
+  op: "Convolution"
+  op_index: 2
+  top_name: "conv1"
+  bottom_name: "data"
+}
+node {
+  name: "relu1"
+  op: "ReLU"
+  op_index: 3
+  top_name: "conv1"
+  bottom_name: "conv1"
+}
+node {
+  name: "norm1"
+  op: "LRN"
+  op_index: 4
+  top_name: "norm1"
+  bottom_name: "conv1"
+}
+node {
+  name: "pool1"
+  op: "Pooling"
+  op_index: 5
+  top_name: "pool1"
+  bottom_name: "norm1"
+}
+node {
+  name: "conv2"
+  op: "Convolution"
+  op_index: 6
+  top_name: "conv2"
+  bottom_name: "pool1"
+}
+node {
+  name: "relu2"
+  op: "ReLU"
+  op_index: 7
+  top_name: "conv2"
+  bottom_name: "conv2"
+}
+node {
+  name: "norm2"
+  op: "LRN"
+  op_index: 8
+  top_name: "norm2"
+  bottom_name: "conv2"
+}
+node {
+  name: "pool2"
+  op: "Pooling"
+  op_index: 9
+  top_name: "pool2"
+  bottom_name: "norm2"
+}
+node {
+  name: "conv3"
+  op: "Convolution"
+  op_index: 10
+  top_name: "conv3"
+  bottom_name: "pool2"
+}
+node {
+  name: "relu3"
+  op: "ReLU"
+  op_index: 11
+  top_name: "conv3"
+  bottom_name: "conv3"
+}
+node {
+  name: "conv4"
+  op: "Convolution"
+  op_index: 12
+  top_name: "conv4"
+  bottom_name: "conv3"
+}
+node {
+  name: "relu4"
+  op: "ReLU"
+  op_index: 13
+  top_name: "conv4"
+  bottom_name: "conv4"
+}
+node {
+  name: "conv5"
+  op: "Convolution"
+  op_index: 14
+  top_name: "conv5"
+  bottom_name: "conv4"
+}
+node {
+  name: "relu5"
+  op: "ReLU"
+  op_index: 15
+  top_name: "conv5"
+  bottom_name: "conv5"
+}
+node {
+  name: "pool5"
+  op: "Pooling"
+  op_index: 16
+  top_name: "pool5"
+  bottom_name: "conv5"
+}
+node {
+  name: "fc6"
+  op: "InnerProduct"
+  op_index: 17
+  top_name: "fc6"
+  bottom_name: "pool5"
+}
+node {
+  name: "relu6"
+  op: "ReLU"
+  op_index: 18
+  top_name: "fc6"
+  bottom_name: "fc6"
+}
+node {
+  name: "drop6"
+  op: "Dropout"
+  op_index: 19
+  top_name: "fc6"
+  bottom_name: "fc6"
+}
+node {
+  name: "fc7"
+  op: "InnerProduct"
+  op_index: 20
+  top_name: "fc7"
+  bottom_name: "fc6"
+}
+node {
+  name: "relu7"
+  op: "ReLU"
+  op_index: 21
+  top_name: "fc7"
+  bottom_name: "fc7"
+}
+node {
+  name: "drop7"
+  op: "Dropout"
+  op_index: 22
+  top_name: "fc7"
+  bottom_name: "fc7"
+}
+node {
+  name: "fc8"
+  op: "InnerProduct"
+  op_index: 23
+  top_name: "fc8"
+  bottom_name: "fc7"
+}
+node {
+  name: "accuracy"
+  op: "Accuracy"
+  op_index: 24
+  top_name: "accuracy"
+  bottom_name: "fc8"
+  bottom_name: "label"
+}
+node {
+  name: "loss"
+  op: "SoftmaxWithLoss"
+  op_index: 25
+  top_name: "loss"
+  bottom_name: "fc8"
+  bottom_name: "label"
+}
